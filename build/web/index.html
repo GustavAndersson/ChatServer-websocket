@@ -6,18 +6,30 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Chat App</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="main.css" rel="stylesheet" type="text/css"/>
         <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
     </head>
     <body>
         <div class="container">
-        <textarea rows="10" cols="45" readonly="readonly" id="messageTextArea"></textarea>
-        <textarea rows="10" cols="20" readonly="readonly" id="usersTextArea"></textarea><br/>
-        <input type="text" placeholder="Add your username/message" id="messageInput"/><br/>
-        <input type="button" onclick="sendMessage()" value="Send"/>
+            <div id="header">
+                <h1 style="color: white">Websockets Chat Application</h1>
+                <p style="color:white;"><i>We love mathematics</i></p>
+            </div>
+            <textarea readonly="readonly" id="messageTextArea"></textarea>
+            <textarea readonly="readonly" id="usersTextArea"></textarea><br/>
+
+            <div class="form-group">
+                <form id="form_send_message">
+                    <input type="text"  id="messageInput" placeholder="Username/message">
+                    <input id="btn_send" type="button" onclick="sendMessage()" value="Send"/>
+                </form>
+            </div>
         </div>
+
         <script>
             var url = "ws://localhost:8080/ChatServer/chatserver";
             var ws = new WebSocket(url);

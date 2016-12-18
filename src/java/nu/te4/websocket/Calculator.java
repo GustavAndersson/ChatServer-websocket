@@ -5,38 +5,85 @@
  */
 package nu.te4.websocket;
 
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonValue;
 /**
  *
  * @author guan97005
  */
 public class Calculator {
 
-    public static String calc(String message) {
-        double svar;
-        int tal1 = Integer.parseInt(message.substring(1));
-        int tal2 = Integer.parseInt(message.substring(3));
+    
+            public static JsonObject calc(String calculatorn, String message) {
+        try {
+            
+            String[] splitToken;
+            int tal1;
+            int tal2;
+            String[] splitHash;
+            calculatorn = "Calculator";
 
-        if (message == "#calc") {
-            message = ("Commands for calculator:\n"
-                    + "#value+value\n"
-                    + "#value-value\n"
-                    + "#value*value\n"
-                    + "#value/value\n"
-                    + "#calc for this ofc");
-        } else if (message.contains("+")) {
-            svar = tal1 + tal2;
-            message = String.valueOf(svar);
-        } else if (message.contains("-")) {
-            svar = tal1 - tal2;
-            message = String.valueOf(svar);
-        } else if (message.contains("/")) {
-            svar = tal1 / tal2;
-            message = String.valueOf(svar);
-        } else if (message.contains("*")) {
-            svar = tal1 * tal2;
-            message = String.valueOf(svar);
+            int svar;
+            if (message.equals("#calc")) {
+                message = (" Here are my commands\n"
+                        + "#value+value\n"
+                        + "#value-value\n"
+                        + "#value*value\n"
+                        + "#value/value\n");
+            }
+            if (message.equals("#")) {
+                message = (" Here are my commands\n"
+                        + "#value+value\n"
+                        + "#value-value\n"
+                        + "#value*value\n"
+                        + "#value/value\n");
+            }
+            if (message.contains("+")) {
+                splitHash = (message).split("\\#");
+                System.out.println("splitHash" + splitHash[1]);
+                splitToken = (splitHash[1].toString()).split("\\+");
+                tal1 = Integer.parseInt(splitToken[0]);
+                tal2 = Integer.parseInt(splitToken[1]);
+                svar = tal1 + tal2;
+                message = String.valueOf(svar);
+                System.out.println("tal1 " + tal1);
+            }
+
+            if (message.contains("-")) {
+                splitHash = (message).split("\\#");
+                splitToken = (splitHash[1].toString()).split("\\-");
+                tal1 = Integer.parseInt(splitToken[0]);
+                tal2 = Integer.parseInt(splitToken[1]);
+                svar = tal1 - tal2;
+                message = String.valueOf(svar);
+                System.out.println("tal1 " + tal1);
+            }
+
+            if (message.contains("/")) {
+                splitHash = (message).split("\\#");
+                splitToken = (splitHash[1].toString()).split("\\/");
+                tal1 = Integer.parseInt(splitToken[0]);
+                tal2 = Integer.parseInt(splitToken[1]);
+                svar = tal1 / tal2;
+                message = String.valueOf(svar);
+                System.out.println("tal1 " + tal1);
+            }
+
+            if (message.contains("*")) {
+                splitHash = (message).split("\\#");
+                splitToken = (splitHash[1].toString()).split("\\*");
+                tal1 = Integer.parseInt(splitToken[0]);
+                tal2 = Integer.parseInt(splitToken[1]);
+                svar = tal1 * tal2;
+                message = String.valueOf(svar);
+                System.out.println("tal1 " + tal1);
+            }
+
+        } catch (Exception e) {
+            System.out.println("ERROR: " + e);
         }
-        return message;
+        JsonObject object = Json.createObjectBuilder().add("username", calculatorn).add("message", message).build();
+        return object;
     }
-
 }

@@ -1,0 +1,68 @@
+body {
+    padding: 0;
+    margin: 0;
+    background-image: url("img/books.png");
+}
+
+p{
+    font-size: 18px;
+}
+
+#header {
+    margin: 0 auto; 
+    padding: 45px 0;
+    text-align: center;
+}
+
+h1{
+    text-align:center;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+}
+
+.container{
+    text-align:center;
+
+}
+
+#messageInput {
+    background: #f0f0f0;
+    border: none;
+    font-size: 20px;
+    font-family: 'Open Sans', sans-serif;
+    outline: none;
+    padding: 10px;
+    margin: 0;
+    width: 352px;
+}
+
+#btn_send{
+    margin: 0;
+    border: none;
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    background: #96be0e;
+    outline: none;
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+textarea{
+    resize: none;
+    background: #f0f0f0;
+}
+
+#messageTextArea{
+    width: 25vw;
+    height: 50vh;
+}
+
+#usersTextArea{
+    width: 7vw;
+    height: 50vh;
+}
+
+#message_container{
+    background: #fff;
+}

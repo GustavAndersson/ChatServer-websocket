@@ -51,7 +51,7 @@ public class ChatserverEndPoint {
         if (username == null) { //användarnamn saknas
             //använd första meddelandet som användarnamn
             userSession.getUserProperties().put("username", message);
-            String returnMessage = buildJsonData("System", "you are now connected as: " + message);
+            String returnMessage = buildJsonData("System", " You are now connected as: " + message);
             userSession.getBasicRemote().sendText(returnMessage);
             Iterator<Session> users = sessions.iterator();
             while (users.hasNext()) {
@@ -66,20 +66,17 @@ public class ChatserverEndPoint {
     }
 
     private String buildJsonData(String username, String message) {
-        double svar;
-        int tal1 = Integer.parseInt(message.substring(1));
-        int tal2 = Integer.parseInt(message.substring(3));
-        //skapar json {"username":username, "message":message} //fast som text
-        if(message.equals("#calc")){
-           System.out.println("Calculator");
-           message = ("Commands for calculator:\n"
-                    + "#value+value\n"
-                    + "#value-value\n"
-                    + "#value*value\n"
-                    + "#value/value\n"
-                    + "/calc for this ofc");
+                //skapar json {"username":username, "message":message} //fast som text
+        JsonObject object;
+        if (message.contains("#")) {
+             object = Calculator.calc(username, message);
+             System.out.println("Du har kommit till #");
+        }else{
+            object = Json.createObjectBuilder().add("username", username).add("message", message).build();
+            System.out.println("Du är på else");
         }
-        JsonObject object = Json.createObjectBuilder().add("username", username).add("message", message).build();
+        
+        
         return object.toString();
     }
 
