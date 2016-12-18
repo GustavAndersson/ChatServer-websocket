@@ -9,12 +9,15 @@ and open the template in the editor.
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
+        <div class="container">
         <textarea rows="10" cols="45" readonly="readonly" id="messageTextArea"></textarea>
         <textarea rows="10" cols="20" readonly="readonly" id="usersTextArea"></textarea><br/>
         <input type="text" placeholder="Add your username/message" id="messageInput"/><br/>
-        <input type="button" onclick="sendMessage()" value="Send"/>     
+        <input type="button" onclick="sendMessage()" value="Send"/>
+        </div>
         <script>
             var url = "ws://localhost:8080/ChatServer/chatserver";
             var ws = new WebSocket(url);

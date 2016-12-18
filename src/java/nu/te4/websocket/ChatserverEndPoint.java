@@ -66,8 +66,19 @@ public class ChatserverEndPoint {
     }
 
     private String buildJsonData(String username, String message) {
+        double svar;
+        int tal1 = Integer.parseInt(message.substring(1));
+        int tal2 = Integer.parseInt(message.substring(3));
         //skapar json {"username":username, "message":message} //fast som text
-         //skapar json {"username":username, "message":message} //fast som text
+        if(message.equals("#calc")){
+           System.out.println("Calculator");
+           message = ("Commands for calculator:\n"
+                    + "#value+value\n"
+                    + "#value-value\n"
+                    + "#value*value\n"
+                    + "#value/value\n"
+                    + "/calc for this ofc");
+        }
         JsonObject object = Json.createObjectBuilder().add("username", username).add("message", message).build();
         return object.toString();
     }

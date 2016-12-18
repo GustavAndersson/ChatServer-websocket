@@ -16,13 +16,13 @@ public class Calculator {
         int tal1 = Integer.parseInt(message.substring(1));
         int tal2 = Integer.parseInt(message.substring(3));
 
-        if (message == "/calc") {
+        if (message == "#calc") {
             message = ("Commands for calculator:\n"
-                    + "/value+value\n"
-                    + "/value-value\n"
-                    + "/value*value\n"
-                    + "/value/value\n"
-                    + "/calc for this ofc");
+                    + "#value+value\n"
+                    + "#value-value\n"
+                    + "#value*value\n"
+                    + "#value/value\n"
+                    + "#calc for this ofc");
         } else if (message.contains("+")) {
             svar = tal1 + tal2;
             message = String.valueOf(svar);
