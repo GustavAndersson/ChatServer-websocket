@@ -19,12 +19,12 @@ public class Calculator {
         try {
             
             String[] splitToken;
-            int tal1;
-            int tal2;
+            double tal1;
+            double tal2;
             String[] splitHash;
             calculatorn = "Calculator";
 
-            int svar;
+            double svar;
             if (message.equals("#calc")) {
                 message = (" Here are my commands\n"
                         + "#value+value\n"
